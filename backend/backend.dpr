@@ -11,7 +11,8 @@ uses
   Horse.Jhonson,
   Horse.Commons,
   Horse.BasicAuthentication,
-  Horse.Compression;
+  Horse.Compression,
+  Horse.HandleException;
 
 var
   App: THorse;
@@ -23,6 +24,7 @@ begin
   App := THorse.Create(9000);
   App.Use(Compression());
   App.Use(Jhonson);
+  App.Use(HandleException);
 
   THorse.Use(HorseBasicAuthentication(
     function(const AUsername, APassword: string): Boolean
@@ -78,22 +80,15 @@ begin
     var
       LConteudo: TJSONObject;
     begin
-      try
-        raise Exception.Create('Erro de teste');
+      raise EHorseException.Create(
+        THTTPStatus.BadRequest,
+        'Erro de execução',
+        'Não foi possível completar a ação (erro de teste com middleware)'
+      );
 
-        LConteudo := TJSONObject.Create;
-        LConteudo.AddPair('nome', 'iago');
-        Res.Send(LConteudo)
-      except
-        on e: Exception do begin
-          Res
-            .Status(500)
-            .Send(TJSONObject.Create(
-              TJSONPair.Create('error', e.Message)
-            ));
-        end;
-      end;
-
+      LConteudo := TJSONObject.Create;
+      LConteudo.AddPair('nome', 'iago');
+      Res.Send(LConteudo);
     end);
 
   App.Start;
