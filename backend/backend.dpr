@@ -5,19 +5,38 @@ program backend;
 {$R *.res}
 
 uses
-  System.SysUtils, Horse;
+  System.SysUtils,
+  System.Json,
+  Horse,
+  Horse.Jhonson;
 
 var
   App: THorse;
+  Users: TJSONArray;
 
 begin
-  App := THorse.Create(9000);
+  Users := TJSONArray.Create;
 
-  App.Get('/ping',
-  procedure (Req: THorseRequest; Res: THorseResponse; Next: TProc)
-  begin
-    Res.Send('pong')
-  end);
+  App   := THorse.Create(9000);
+  App.Use(Jhonson);
+
+  App.Get('/users',
+    procedure (Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    begin
+      Res.Send<TJSONAncestor>(Users.Clone);
+    end);
+
+  App.Post('/users',
+    procedure (Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    var user: TJSONObject;
+    begin
+      user  := Req.Body<TJSONObject>.Clone as TJSONObject;
+      Users.AddElement(user);
+
+      Res
+        .Status(201)
+        .Send<TJSONAncestor>(Users.Clone);
+    end);
 
   App.Start;
 end.
