@@ -1,4 +1,4 @@
-program backend;
+﻿program backend;
 
 {$APPTYPE CONSOLE}
 
@@ -9,7 +9,8 @@ uses
   System.Json,
   Horse,
   Horse.Jhonson,
-  Horse.Commons;
+  Horse.Commons,
+  Horse.BasicAuthentication;
 
 var
   App: THorse;
@@ -20,6 +21,13 @@ begin
 
   App   := THorse.Create(9000);
   App.Use(Jhonson);
+
+  THorse.Use(HorseBasicAuthentication(
+    function(const AUsername, APassword: string): Boolean
+    begin
+      // Here inside you can access your database and validate if username and password are valid
+      Result := AUsername.Equals('user') and APassword.Equals('password');
+    end));
 
   App.Get('/users',
     procedure (Req: THorseRequest; Res: THorseResponse; Next: TProc)
@@ -44,7 +52,7 @@ begin
     var id: Integer;
     begin
       id  := Req.Params.Items['id'].ToInteger;
-      Users.Remove(id).Free;// id utilizado como �ndice
+      Users.Remove(id).Free;// id utilizado como índice
 
       Res
         .Status(THTTPStatus.NoContent)
