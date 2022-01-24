@@ -10,7 +10,8 @@ uses
   Horse,
   Horse.Jhonson,
   Horse.Commons,
-  Horse.BasicAuthentication;
+  Horse.BasicAuthentication,
+  Horse.Compression;
 
 var
   App: THorse;
@@ -19,7 +20,8 @@ var
 begin
   Users := TJSONArray.Create;
 
-  App   := THorse.Create(9000);
+  App := THorse.Create(9000);
+  App.Use(Compression());
   App.Use(Jhonson);
 
   THorse.Use(HorseBasicAuthentication(
@@ -57,6 +59,18 @@ begin
       Res
         .Status(THTTPStatus.NoContent)
         .Send<TJSONAncestor>(Users.Clone);
+    end);
+
+  App.Get('/ping',
+    procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    var
+      I: Integer;
+      LPong: TJSONArray;
+    begin
+      LPong := TJSONArray.Create;
+      for I := 0 to 1000 do
+        LPong.Add(TJSONObject.Create(TJSONPair.Create('ping', 'pong')));
+      Res.Send(LPong);
     end);
 
   App.Start;
