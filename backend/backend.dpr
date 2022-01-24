@@ -8,7 +8,8 @@ uses
   System.SysUtils,
   System.Json,
   Horse,
-  Horse.Jhonson;
+  Horse.Jhonson,
+  Horse.Commons;
 
 var
   App: THorse;
@@ -34,8 +35,8 @@ begin
       Users.AddElement(user);
 
       Res
-        .Status(201)
-        .Send<TJSONAncestor>(Users.Clone);
+        .Status(THTTPStatus.Created)
+        .Send<TJSONAncestor>(user.Clone);
     end);
 
   App.Start;
