@@ -73,5 +73,28 @@ begin
       Res.Send(LPong);
     end);
 
+  App.Get('/exception',
+    procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    var
+      LConteudo: TJSONObject;
+    begin
+      try
+        raise Exception.Create('Erro de teste');
+
+        LConteudo := TJSONObject.Create;
+        LConteudo.AddPair('nome', 'iago');
+        Res.Send(LConteudo)
+      except
+        on e: Exception do begin
+          Res
+            .Status(500)
+            .Send(TJSONObject.Create(
+              TJSONPair.Create('error', e.Message)
+            ));
+        end;
+      end;
+
+    end);
+
   App.Start;
 end.
