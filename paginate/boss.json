@@ -1,0 +1,12 @@
+{
+	"name": "paginate",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./src",
+	"projects": [],
+	"dependencies": {
+		"github.com/bittencourtthulio/horse-paginate": ">0.0.0",
+		"github.com/viniciussanchez/dataset-serialize": "^v2.3.5"
+	}
+}
