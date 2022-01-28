@@ -42,21 +42,21 @@ function TServiceUser.ListAll(const AQuery: TDictionary<string, string>): TFDQue
 //  LOrdenacaoSplit, LOrdenacoes: TArray<string>;
 //  LOrderBy: string;
 begin
-//  if AQuery.ContainsKey('since_id') then
-//  begin
-//    qryPesquisa.SQL.Add('and id >= :since_id');
-//    qryRecordCount.SQL.Add('and id >= :since_id');
-//    qryPesquisa.ParamByName('since_id').AsLargeInt := AQuery.Items['since_id'].ToInt64;
-//    qryRecordCount.ParamByName('since_id').AsLargeInt := AQuery.Items['since_id'].ToInt64;
-//  end;
+  if AQuery.ContainsKey('since_id') then
+  begin
+    qryPesquisa.SQL.Add('and id >= :since_id');
+    qryRecordCount.SQL.Add('and id >= :since_id');
+    qryPesquisa.ParamByName('since_id').AsLargeInt := AQuery.Items['since_id'].ToInt64;
+    qryRecordCount.ParamByName('since_id').AsLargeInt := AQuery.Items['since_id'].ToInt64;
+  end;
 
-//  if AQuery.ContainsKey('max_id') then
-//  begin
-//    qryPesquisa.SQL.Add('and id <= :max_id');
-//    qryRecordCount.SQL.Add('and id <= :max_id');
-//    qryPesquisa.ParamByName('max_id').AsLargeInt := AQuery.Items['max_id'].ToInt64;
-//    qryRecordCount.ParamByName('max_id').AsLargeInt := AQuery.Items['max_id'].ToInt64;
-//  end;
+  if AQuery.ContainsKey('max_id') then
+  begin
+    qryPesquisa.SQL.Add('and id <= :max_id');
+    qryRecordCount.SQL.Add('and id <= :max_id');
+    qryPesquisa.ParamByName('max_id').AsLargeInt := AQuery.Items['max_id'].ToInt64;
+    qryRecordCount.ParamByName('max_id').AsLargeInt := AQuery.Items['max_id'].ToInt64;
+  end;
 
 //  if AQuery.ContainsKey('country') then
 //  begin

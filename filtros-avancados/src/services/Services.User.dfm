@@ -3,11 +3,6 @@ inherited ServiceUser: TServiceUser
   Height = 129
   Width = 376
   inherited FDConnection: TFDConnection
-    Params.Strings = (
-      
-        'Database=C:\#DEV\#Cursos\youtube\Delphi-Horse\api-rest\filtros-a' +
-        'vancados\db\mock.db'
-      'DriverID=SQLite')
     Left = 80
     Top = 48
   end
