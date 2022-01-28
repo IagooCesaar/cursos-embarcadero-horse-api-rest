@@ -37,10 +37,10 @@ begin
 end;
 
 function TServiceUser.ListAll(const AQuery: TDictionary<string, string>): TFDQuery;
-//var
-//  I: Integer;
-//  LOrdenacaoSplit, LOrdenacoes: TArray<string>;
-//  LOrderBy: string;
+var
+  I: Integer;
+  LOrdenacaoSplit, LOrdenacoes: TArray<string>;
+  LOrderBy: string;
 begin
   if AQuery.ContainsKey('since_id') then
   begin
@@ -74,21 +74,21 @@ begin
     qryRecordCount.ParamByName('state').AsString := AQuery.Items['state'];
   end;
 
-//  if AQuery.ContainsKey('sort') then
-//  begin
-//    LOrderBy := 'order by ';
-//    LOrdenacoes := AQuery.Items['sort'].Split([',']);
-//    for I := 0 to Pred(Length(LOrdenacoes)) do
-//    begin
-//      if I > 0 then
-//        LOrderBy := LOrderBy + ', ';
-//      LOrdenacaoSplit := LOrdenacoes[I].Split([':']);
-//      LOrderBy := LOrderBy + LOrdenacaoSplit[0];
-//      if Length(LOrdenacaoSplit) > 1 then
-//        LOrderBy := LOrderBy + ' ' + LOrdenacaoSplit[1];
-//    end;
-//    qryPesquisa.SQL.Add(LOrderBy);
-//  end;
+  if AQuery.ContainsKey('sort') then
+  begin
+    LOrderBy := 'order by ';
+    LOrdenacoes := AQuery.Items['sort'].Split([',']);
+    for I := 0 to Pred(Length(LOrdenacoes)) do
+    begin
+      if I > 0 then
+        LOrderBy := LOrderBy + ', ';
+      LOrdenacaoSplit := LOrdenacoes[I].Split([':']);
+      LOrderBy := LOrderBy + LOrdenacaoSplit[0];
+      if Length(LOrdenacaoSplit) > 1 then
+        LOrderBy := LOrderBy + ' ' + LOrdenacaoSplit[1];
+    end;
+    qryPesquisa.SQL.Add(LOrderBy);
+  end;
 
   if AQuery.ContainsKey('limit') then
     qryPesquisa.FetchOptions.RecsMax := AQuery.Items['limit'].ToInteger
