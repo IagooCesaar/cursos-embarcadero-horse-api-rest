@@ -58,21 +58,21 @@ begin
     qryRecordCount.ParamByName('max_id').AsLargeInt := AQuery.Items['max_id'].ToInt64;
   end;
 
-//  if AQuery.ContainsKey('country') then
-//  begin
-//    qryPesquisa.SQL.Add('and country = :country');
-//    qryRecordCount.SQL.Add('and country = :country');
-//    qryPesquisa.ParamByName('country').AsString := AQuery.Items['country'];
-//    qryRecordCount.ParamByName('country').AsString := AQuery.Items['country'];
-//  end;
+  if AQuery.ContainsKey('country') then
+  begin
+    qryPesquisa.SQL.Add('and country = :country');
+    qryRecordCount.SQL.Add('and country = :country');
+    qryPesquisa.ParamByName('country').AsString := AQuery.Items['country'];
+    qryRecordCount.ParamByName('country').AsString := AQuery.Items['country'];
+  end;
 
-//  if AQuery.ContainsKey('state') then
-//  begin
-//    qryPesquisa.SQL.Add('and state = :state');
-//    qryRecordCount.SQL.Add('and state = :state');
-//    qryPesquisa.ParamByName('state').AsString := AQuery.Items['state'];
-//    qryRecordCount.ParamByName('state').AsString := AQuery.Items['state'];
-//  end;
+  if AQuery.ContainsKey('state') then
+  begin
+    qryPesquisa.SQL.Add('and state = :state');
+    qryRecordCount.SQL.Add('and state = :state');
+    qryPesquisa.ParamByName('state').AsString := AQuery.Items['state'];
+    qryRecordCount.ParamByName('state').AsString := AQuery.Items['state'];
+  end;
 
 //  if AQuery.ContainsKey('sort') then
 //  begin
