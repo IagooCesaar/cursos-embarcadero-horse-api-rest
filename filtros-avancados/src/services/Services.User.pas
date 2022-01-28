@@ -90,17 +90,17 @@ begin
 //    qryPesquisa.SQL.Add(LOrderBy);
 //  end;
 
-//  if AQuery.ContainsKey('limit') then
-//    qryPesquisa.FetchOptions.RecsMax := AQuery.Items['limit'].ToInteger
-//  else
-//    qryPesquisa.FetchOptions.RecsMax := 50;
+  if AQuery.ContainsKey('limit') then
+    qryPesquisa.FetchOptions.RecsMax := AQuery.Items['limit'].ToInteger
+  else
+    qryPesquisa.FetchOptions.RecsMax := 50;
 
-//  if AQuery.ContainsKey('offset') then
-//    qryPesquisa.FetchOptions.RecsSkip := AQuery.Items['offset'].ToInteger
-//  else
-//    qryPesquisa.FetchOptions.RecsSkip := -1;
+  if AQuery.ContainsKey('offset') then
+    qryPesquisa.FetchOptions.RecsSkip := AQuery.Items['offset'].ToInteger
+  else
+    qryPesquisa.FetchOptions.RecsSkip := -1;
 
-//  qryRecordCount.Open();
+  qryRecordCount.Open();
 
   qryPesquisa.Open();
   Result := qryPesquisa;

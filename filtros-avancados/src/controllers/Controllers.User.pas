@@ -12,17 +12,17 @@ procedure DoListUsers(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   LUsers: TJSONArray;
   LService: TServiceUser;
-//  LContent: TJSONObject;
+  LContent: TJSONObject;
 begin
   LService := TServiceUser.Create;
   try
     LUsers := LService.ListAll(Req.Query).ToJSONArray();
-    Res.Send<TJSONArray>(LUsers);
+    //Res.Send<TJSONArray>(LUsers);
 
-//    LContent := TJSONObject.Create;
-//    LContent.AddPair('data', LUsers);
-//    LContent.AddPair('records', TJSONNumber.Create(LService.qryRecordCountcount.AsLargeInt));
-//    Res.Send<TJSONObject>(LContent);
+    LContent := TJSONObject.Create;
+    LContent.AddPair('data', LUsers);
+    LContent.AddPair('records', TJSONNumber.Create(LService.qryRecordCountcount.AsLargeInt));
+    Res.Send<TJSONObject>(LContent);
   finally
     LService.Free;
   end;
