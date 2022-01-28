@@ -5,8 +5,8 @@ object ProviderConnection: TProviderConnection
   object FDConnection: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\vinicius.FIORILLI\Downloads\intensive-delphi\2' +
-        '020\Filtros avan'#231'ados no Horse\api\db\mock.db'
+        'Database=C:\#DEV\#Cursos\youtube\Delphi-Horse\api-rest\filtros-a' +
+        'vancados\db\mock.db'
       'DriverID=SQLite')
     ConnectedStoredUsage = [auDesignTime]
     LoginPrompt = False
