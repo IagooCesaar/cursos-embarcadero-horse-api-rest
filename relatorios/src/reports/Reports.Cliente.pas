@@ -21,7 +21,7 @@ type
     txtTelefone: TRLDBText;
   protected
     function GetReportName: String; override;
-    procedure CriarService; virtual;
+    procedure CriarService; override;
   end;
 
 
