@@ -18,10 +18,6 @@ type
     lblData: TRLSystemInfo;
     lblHora: TRLSystemInfo;
     RLPDFFilter: TRLPDFFilter;
-  private
-    { Private declarations }
-  public
-    { Public declarations }
   end;
 
 implementation

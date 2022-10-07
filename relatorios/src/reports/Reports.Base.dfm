@@ -119,7 +119,7 @@ object ReportBase: TReportBase
       'ortes Inform'#225'tica'
     FileName = 'report.pdf'
     DisplayName = 'Documento PDF'
-    Left = 320
-    Top = 480
+    Left = 48
+    Top = 224
   end
 end

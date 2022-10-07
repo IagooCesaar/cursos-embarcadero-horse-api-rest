@@ -10,7 +10,9 @@ uses
   Service.Base in 'src\services\Service.Base.pas' {ServiceBase: TDataModule},
   Service.Base.Simples in 'src\services\Service.Base.Simples.pas' {ServiceBaseSimples: TDataModule},
   Service.Cliente in 'src\services\Service.Cliente.pas' {ServiceBaseCliente: TDataModule},
-  Reports.Base in 'src\reports\Reports.Base.pas' {ReportBase: TFrame};
+  Reports.Base in 'src\reports\Reports.Base.pas' {ReportBase: TFrame},
+  Reports.Base.Simples in 'src\reports\Reports.Base.Simples.pas' {ReportBaseSimples: TFrame},
+  Reports.Cliente in 'src\reports\Reports.Cliente.pas' {ReportBaseSimples1: TFrame};
 
 begin
   try
