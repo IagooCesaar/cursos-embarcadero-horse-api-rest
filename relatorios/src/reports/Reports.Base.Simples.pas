@@ -16,7 +16,6 @@ type
   private
     FService: TServiceBaseSimples;
   protected
-    function GetReportName: String; override;
     procedure CriarService; virtual; abstract;
     property Service: TServiceBaseSimples read FService write FService;
   public
