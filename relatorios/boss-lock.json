@@ -9,6 +9,14 @@
 			"artifacts": {},
 			"failed": false,
 			"changed": false
+		},
+		"github.com/hashload/horse-octet-stream": {
+			"name": "horse-octet-stream",
+			"version": "1.9.8",
+			"hash": "75ecf216bfa4aa33352202c5cd9a060d",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
 		}
 	}
 }

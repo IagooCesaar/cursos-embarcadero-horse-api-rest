@@ -13,6 +13,10 @@ uses
 
 procedure Start;
 begin
+  {$IFDEF MSWINDOWS}
+  IsConsole := False;
+  ReportMemoryLeaksOnShutdown := True;
+  {$ENDIF}
 
   THorse.Listen(StrToIntDef(GetEnvironmentVariable('SERVER_PORT'), 8486),
     procedure(Horse: THorse)
