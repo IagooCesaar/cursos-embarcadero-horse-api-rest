@@ -21,14 +21,24 @@ type
     txtTelefone: TRLDBText;
   protected
     function GetReportName: String; override;
+    procedure CriarService; virtual;
   end;
 
 
 implementation
 
+uses
+  Service.Cliente;
+
 {$R *.dfm}
 
 { TReportCliente }
+
+procedure TReportCliente.CriarService;
+begin
+  inherited;
+  Service := TServiceCliente.Create(Self);
+end;
 
 function TReportCliente.GetReportName: String;
 begin

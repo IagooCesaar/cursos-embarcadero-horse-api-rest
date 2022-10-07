@@ -1,4 +1,4 @@
-inherited ServiceBaseCliente: TServiceBaseCliente
+inherited ServiceCliente: TServiceCliente
   inherited Connection: TFDConnection
     Connected = True
   end
@@ -10,6 +10,7 @@ inherited ServiceBaseCliente: TServiceBaseCliente
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qRecordnome: TStringField
       FieldName = 'nome'

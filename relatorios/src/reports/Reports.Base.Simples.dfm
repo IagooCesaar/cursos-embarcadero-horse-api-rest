@@ -1,6 +1,7 @@
 inherited ReportBaseSimples: TReportBaseSimples
   inherited Report: TRLReport
     DataSource = dsReport
+    BeforePrint = ReportBeforePrint
     inherited BandFooter: TRLBand
       Top = 120
       ExplicitTop = 120

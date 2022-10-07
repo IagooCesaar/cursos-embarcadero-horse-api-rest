@@ -12,7 +12,7 @@ uses
   FireDAC.Comp.Client;
 
 type
-  TServiceBaseCliente = class(TServiceBaseSimples)
+  TServiceCliente = class(TServiceBaseSimples)
     qRecordid: TFDAutoIncField;
     qRecordnome: TStringField;
     qRecordsobrenome: TStringField;
