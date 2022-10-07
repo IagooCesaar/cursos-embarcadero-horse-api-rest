@@ -9,14 +9,22 @@ implementation
 uses
   System.SyncObjs,
   System.SysUtils,
-  Horse;
+  Horse,
+  Horse.OctetStream,
+
+  Controllers.Cliente;
 
 procedure Start;
 begin
+
   {$IFDEF MSWINDOWS}
   IsConsole := False;
   ReportMemoryLeaksOnShutdown := True;
   {$ENDIF}
+
+  THorse.Use(OctetStream);
+
+  Controllers.Cliente.Registry;
 
   THorse.Listen(StrToIntDef(GetEnvironmentVariable('SERVER_PORT'), 8486),
     procedure(Horse: THorse)
