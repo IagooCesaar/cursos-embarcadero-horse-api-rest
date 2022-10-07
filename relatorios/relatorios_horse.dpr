@@ -6,7 +6,10 @@ program relatorios_horse;
 
 uses
   System.SysUtils,
-  App in 'src\App.pas';
+  App in 'src\App.pas',
+  Service.Base in 'src\services\Service.Base.pas' {ServiceBase: TDataModule},
+  Service.Base.Simples in 'src\services\Service.Base.Simples.pas' {ServiceBaseSimples: TDataModule},
+  Service.Cliente in 'src\services\Service.Cliente.pas' {ServiceBaseCliente: TDataModule};
 
 begin
   try
