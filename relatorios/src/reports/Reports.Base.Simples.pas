@@ -12,11 +12,20 @@ type
     BandeCabecalho: TRLBand;
     BandDetail: TRLBand;
     dsReport: TDataSource;
+  protected
+    function GetReportName: String; override;
   end;
 
 
 implementation
 
 {$R *.dfm}
+
+{ TReportBaseSimples }
+
+function TReportBaseSimples.GetReportName: String;
+begin
+  Result := 'ReportBase';
+end;
 
 end.

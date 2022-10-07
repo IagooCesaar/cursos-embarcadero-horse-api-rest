@@ -19,11 +19,20 @@ type
     txtSobrenome: TRLDBText;
     txtEmail: TRLDBText;
     txtTelefone: TRLDBText;
+  protected
+    function GetReportName: String; override;
   end;
 
 
 implementation
 
 {$R *.dfm}
+
+{ TReportCliente }
+
+function TReportCliente.GetReportName: String;
+begin
+  Result := 'clientes';
+end;
 
 end.
