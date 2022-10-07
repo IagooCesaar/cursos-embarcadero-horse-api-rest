@@ -120,8 +120,8 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\reports\Report.Base.pas">
-            <Form>Frame1</Form>
+        <DCCReference Include="src\reports\Reports.Base.pas">
+            <Form>ReportBase</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
